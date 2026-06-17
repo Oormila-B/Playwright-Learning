@@ -1,0 +1,9 @@
+const { test , expect } = require('@playwright/test');
+test('Page Playwright test', async ({ page }) => { //if i need run only this testcase ..give test.only
+// chrome - plugins/ cookies
+   // const context = await browser.newContext();//to open new browser
+    //const page = await context.newPage();//to open new page 
+    await page.goto("https://www.google.com"); // give which page needs to be tested
+    console.log(await page.title());
+    await expect(page).toHaveTitle("Google");
+}); 
