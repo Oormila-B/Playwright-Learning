@@ -1,0 +1,15 @@
+const { test , expect } = require('@playwright/test');
+test.only('First Playwright test', async ({ browser }) =>{
+    //playwright code
+    // for chrome browser to open 
+    //chrome - plugins/ cookies
+    const context = await browser.newContext();//to open new browser
+    const page = await context.newPage();//to open new page 
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");// give which page needs to be tested
+    console.log(await page.title());
+    //css, xpath
+    await page.locator('#username').fill("rahulshettyacademy"); //type--->fill 
+    await page.locator("[type='password']").fill("Learning ");
+    await page.locator("#signInBtn").click();
+    console.log(await page.locator("[style*=block]").textContent()); 
+});
