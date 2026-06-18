@@ -5,6 +5,7 @@ test.only('Browser content validating error login', async ({ browser }) =>{
     const page = await context.newPage();//to open new page 
     const userName = page.locator('#username');
     const signIn = page.locator("#signInBtn");
+    const cardTitles = page.locator(".card-body a");
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");// give which page needs to be tested
     console.log(await page.title());
 
