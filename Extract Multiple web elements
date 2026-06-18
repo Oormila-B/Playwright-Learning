@@ -17,6 +17,8 @@ test.only('Browser content validating error login', async ({ browser }) =>{
     await userName.fill(""); // this will help to delete the previous one
     await userName.fill("rahulshettyacademy");
     await signIn.click();
-    console.log(await page.locator(".card-body a").first().textContent());
-    console.log(await page.locator(".card-body a").nth(1).textContent());
+    console.log(await cardTitles.first().textContent()); // to get first element
+    console.log(await cardTitles.nth(1).textContent());// to get second element
+    const allTitles = await cardTitles.allTextContents();// to get all the elements
+    console.log(allTitles);
 });
