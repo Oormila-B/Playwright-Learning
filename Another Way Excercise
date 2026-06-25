@@ -1,0 +1,12 @@
+const { test , expect } = require('@playwright/test');
+test.only('Browser Context-Validating Error login' , async({page})=>
+{
+    await page.goto("https://rahulshettyacademy.com/client/#/auth/login");
+    await page.locator("#userName").fill("oormilaoormila3@gmail.com");
+    await page.locator("userPassword").type("Oormi2203");
+    await page.locator("[value='Login']").click();
+    //await page.waitForLoadState('networkIdle');//wait untill all netword called
+    await page.locator(".card-body b").first().waitFor();
+    const titles=await page.locator(".card-body b").allTextContents();
+    console.log(titles);
+});
