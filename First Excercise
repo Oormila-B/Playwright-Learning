@@ -1,0 +1,27 @@
+const { test , expect } = require('@playwright/test');
+test.only('Browser content validating error login', async ({ browser }) =>{
+    
+    const context = await browser.newContext();//to open new browser
+    const page = await context.newPage();//to open new page 
+    const userName = page.locator('#userEmail');
+    const login = page.locator("#login");
+    const cardTitles = page.locator(".card-body b");// Using standard selector for Let's Shop app
+    
+
+    await page.goto("https://rahulshettyacademy.com/client/#/auth/login");// give which page needs to be tested
+    console.log(await page.title());
+
+    //css, xpath
+    await userName.fill(""); //type--->fill 
+    await page.locator("[type='password']").fill("Oormi2203");
+    await login.click();
+    //console.log(await page.locator("[style*=block]").textContent()); 
+    //fill
+    await userName.fill(""); // this will help to delete the previous one
+    await userName.fill("oormilaoormila3@gmail.com");
+    await login.click();
+    console.log(await cardTitles.first().textContent()); // to get first element
+    console.log(await cardTitles.nth(1).textContent());// to get second element
+    const allTitles = await cardTitles.allTextContents();// to get all the elements
+    console.log(allTitles);
+});
